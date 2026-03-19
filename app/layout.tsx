@@ -42,6 +42,9 @@ export const metadata: Metadata = {
       "Computer Science student at Northeastern University building full-stack apps and ML systems.",
   },
   metadataBase: new URL("https://rahulrao.dev"),
+  verification: {
+    google: "ajbY1T0Gzbt92_4XbxBYkAFezmwIrPiWN0OSbAG30mI",
+  },
 };
 
 export default function RootLayout({
