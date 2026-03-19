@@ -9,9 +9,9 @@ const interests = [
     title: "Basketball",
     color: "from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30",
     border: "border-orange-200/60 dark:border-orange-800/40",
-    tag: "Warriors fan · AAU · D3 recruited",
+    tag: "AAU · Varsity · D3 recruited",
     description:
-      "Basketball has been a huge part of my life. I played varsity in high school and competed in AAU for San Diego Sol, where I was recruited by multiple Division III programs. I'm a lifelong Golden State Warriors fan — the resilience and adaptability that defines great basketball teams is something I try to bring into everything I do.",
+      "Basketball has been a huge part of my life. I played varsity in high school and competed in AAU for San Diego Sol, where I was recruited by multiple Division III programs. The discipline, teamwork, and resilience that basketball demands are things I try to bring into everything I do.",
   },
   {
     emoji: "📈",
