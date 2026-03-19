@@ -238,29 +238,17 @@ export default function Resume() {
                     );
                   }
 
-                  // Progression entry — multiple roles under one org
+                  // Progression entry — each role rendered as a flat TimelineEntry
                   return (
-                    <div
-                      key={i}
-                      className="relative pl-5 border-l-2 border-zinc-200 dark:border-zinc-700 hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors duration-200"
-                    >
-                      <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-indigo-400" />
-                      <p className="text-sm text-indigo-500 dark:text-indigo-400 font-semibold mb-4">{act.org}</p>
-
-                      <div className="space-y-4">
-                        {act.roles.map((r, j) => (
-                          <motion.div
-                            key={j}
-                            whileHover={{ x: 4 }}
-                            transition={{ duration: 0.2 }}
-                            className="rounded-2xl p-4 bg-white/60 dark:bg-zinc-800/40 border border-zinc-200/60 dark:border-zinc-700/60 shadow-sm hover:shadow-md hover:border-indigo-200 dark:hover:border-indigo-700/60 transition-all duration-200"
-                          >
-                            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{r.role}</h4>
-                            <p className="text-xs text-zinc-400 font-medium mb-3">{r.period}</p>
-                            <BulletList bullets={r.bullets} />
-                          </motion.div>
-                        ))}
-                      </div>
+                    <div key={i} className="space-y-6">
+                      {act.roles.map((r, j) => (
+                        <TimelineEntry key={j}>
+                          <p className="text-xs text-zinc-400 font-medium mb-1">{r.period}</p>
+                          <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{r.role}</h4>
+                          <p className="text-sm text-indigo-500 dark:text-indigo-400 font-medium mb-2">{act.org}</p>
+                          <BulletList bullets={r.bullets} />
+                        </TimelineEntry>
+                      ))}
                     </div>
                   );
                 })}
