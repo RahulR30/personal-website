@@ -101,17 +101,6 @@ export default function Portfolio() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-                    >
-                      <Github size={14} />
-                      Code
-                    </a>
-                  )}
                   {project.live && (
                     <a
                       href={project.live}
