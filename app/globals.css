@@ -1,8 +1,26 @@
 @import "tailwindcss";
 
+/* Dark mode via .dark class (next-themes) */
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #0a0a0a;
+  --accent: #6366f1;
+  --accent-light: #a5b4fc;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --card: #ffffff;
+}
+
+.dark {
+  --background: #0c0c0f;
+  --foreground: #f4f4f5;
+  --accent: #818cf8;
+  --accent-light: #6366f1;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --card: #18181b;
 }
 
 @theme inline {
@@ -12,15 +30,53 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 100px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #4338ca;
+}
+
+/* Selection */
+::selection {
+  background: #c7d2fe;
+  color: #3730a3;
+}
+.dark ::selection {
+  background: #3730a3;
+  color: #e0e7ff;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
