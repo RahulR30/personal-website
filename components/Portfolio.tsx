@@ -23,7 +23,7 @@ const projects = [
     description:
       "Context-aware AI tutoring engine that delivers logic-based critiques of user-submitted algorithm solutions. Built with a scalable RESTful backend with automated data seeding and containerized deployment for environment parity.",
     tags: ["Docker", "Ollama API", "REST API", "Python"],
-    github: "",
+    github: "https://github.com/RahulR30/AlgoTutorAI",
     live: "",
     light: "from-indigo-50 to-violet-50",
     dark: "dark:from-indigo-950/30 dark:to-violet-950/30",
