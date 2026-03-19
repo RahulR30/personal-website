@@ -29,7 +29,7 @@ const items = [
     abstract:
       "Leading development of an NLP-powered tool that distinguishes substantive legal changes from superficial text edits in contract documents. Uses semantic analysis to surface what actually changed in meaning — not just in wording.",
     tags: ["NLP", "Semantic Analysis", "Python", "Northeastern AI"],
-    note: "Tech Lead · Northeastern AI (MLE Dev Team)",
+    note: "Tech Lead · Northeastern AI (MLE Dev Team) · Through Apr 2026",
   },
   {
     type: "work" as const,
@@ -55,7 +55,7 @@ const items = [
     abstract:
       "Leading a student developer team to build and maintain the Northeastern Blockchain organization's web presence. Coordinating agile sprints, conducting code reviews, and designing curriculum for smart contract workshops.",
     tags: ["React", "TypeScript", "Agile", "Web3"],
-    note: "Technology Lead · Northeastern Blockchain",
+    note: "Technology Lead · Northeastern Blockchain · Through Apr 2026",
   },
   {
     type: "research" as const,
