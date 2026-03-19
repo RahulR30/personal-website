@@ -25,10 +25,10 @@ const items = [
     statusStyle: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/50",
     dotStyle: "bg-emerald-500 animate-pulse",
     icon: FlaskConical,
-    title: "Lead-Lag Arbitrage in Equity Markets",
+    title: "Lead-Lag Dynamics in Equity Markets",
     abstract:
-      "Exploiting lead-lag relationships between financial instruments to make directional decisions within a seconds-long trading window. The core idea: when a liquid, heavily-traded asset moves, less-traded correlated assets often lag behind — creating a brief, predictable opportunity. This work focuses on detecting those lag signals in real time and building a framework to capitalize on them before the market corrects.",
-    tags: ["Lead-Lag Analysis", "High-Frequency Data", "Statistical Arbitrage", "Python"],
+      "Researching temporal relationships between financial instruments and how information propagates across correlated assets at short time horizons. Exploring whether these dynamics can be identified and acted on systematically.",
+    tags: ["Quantitative Finance", "High-Frequency Data", "Python"],
     note: "Details withheld — work in progress.",
   },
 ];
