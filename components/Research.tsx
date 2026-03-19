@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FlaskConical, Lock, Briefcase, Calendar } from "lucide-react";
+import { FlaskConical, Lock, Briefcase, Calendar, Globe, Brain, FileSearch } from "lucide-react";
 import FadeIn from "./FadeIn";
 
 const items = [
@@ -17,6 +17,45 @@ const items = [
       "Joining Wayfair's Supply Chain & Retail Technology team in Boston for a six-month co-op. Will be working on engineering problems at the intersection of e-commerce infrastructure, supply chain logistics, and retail systems — applying software engineering to large-scale, data-driven platforms.",
     tags: ["Supply Chain Systems", "Retail Technology", "Boston, MA", "Jul – Dec 2026"],
     note: "Starting July 2026.",
+  },
+  {
+    type: "work" as const,
+    field: "NLP · Legal Tech",
+    status: "Active",
+    statusStyle: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/50",
+    dotStyle: "bg-emerald-500 animate-pulse",
+    icon: FileSearch,
+    title: "Semantic Contract Diff (SCD)",
+    abstract:
+      "Leading development of an NLP-powered tool that distinguishes substantive legal changes from superficial text edits in contract documents. Uses semantic analysis to surface what actually changed in meaning — not just in wording.",
+    tags: ["NLP", "Semantic Analysis", "Python", "Northeastern AI"],
+    note: "Tech Lead · Northeastern AI (MLE Dev Team)",
+  },
+  {
+    type: "work" as const,
+    field: "Computer Vision · Artificial Intelligence",
+    status: "Active",
+    statusStyle: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/50",
+    dotStyle: "bg-emerald-500 animate-pulse",
+    icon: Brain,
+    title: "Adaptive Facial Expression Recognition",
+    abstract:
+      "Building a game-based learning tool to help neurodivergent children recognize facial expressions using real human faces. Implemented a CNN in PyTorch trained on FER2013Plus (73.67% test accuracy) and explored Vision Transformers for higher performance. Also optimized the training data pipeline to eliminate dead time between epochs.",
+    tags: ["PyTorch", "CNN", "Vision Transformer", "Computer Vision", "CS4100"],
+    note: "CS4100 · Foundations of AI · Northeastern University",
+  },
+  {
+    type: "work" as const,
+    field: "Web Development · Leadership",
+    status: "Active",
+    statusStyle: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/50",
+    dotStyle: "bg-emerald-500 animate-pulse",
+    icon: Globe,
+    title: "Northeastern Blockchain — Web Platform",
+    abstract:
+      "Leading a student developer team to build and maintain the Northeastern Blockchain organization's web presence. Coordinating agile sprints, conducting code reviews, and designing curriculum for smart contract workshops.",
+    tags: ["React", "TypeScript", "Agile", "Web3"],
+    note: "Technology Lead · Northeastern Blockchain",
   },
   {
     type: "research" as const,
