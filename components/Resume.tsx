@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, GraduationCap, Download, Users } from "lucide-react";
+import { Briefcase, GraduationCap, Download, Users, BarChart2, Layers } from "lucide-react";
 import FadeIn from "./FadeIn";
 
 const skills = [
@@ -114,6 +114,44 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
   );
 }
 
+// Shared subsection header used by all five subsections
+function SubsectionHeader({ icon: Icon, title }: { icon: React.ElementType; title: string }) {
+  return (
+    <div className="flex items-center gap-2 mb-6">
+      <Icon size={18} className="text-indigo-500" />
+      <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">{title}</h3>
+    </div>
+  );
+}
+
+// Shared bullet list used by single activities and progression roles
+function BulletList({ bullets }: { bullets: string[] }) {
+  return (
+    <ul className="space-y-1.5">
+      {bullets.map((b, i) => (
+        <li key={i} className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex gap-2">
+          <span className="text-indigo-400 mt-1 shrink-0">–</span>
+          <span>{b}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// Shared timeline entry wrapper — consistent hover, dot, and border across all sections
+function TimelineEntry({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      whileHover={{ x: 4 }}
+      transition={{ duration: 0.2 }}
+      className="relative pl-5 border-l-2 border-zinc-200 dark:border-zinc-700 hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors duration-200"
+    >
+      <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-indigo-400" />
+      {children}
+    </motion.div>
+  );
+}
+
 export default function Resume() {
   return (
     <section id="resume" className="py-28 px-6 bg-zinc-50/60 dark:bg-zinc-900/40">
@@ -132,7 +170,7 @@ export default function Resume() {
           {/* Left column */}
           <div className="space-y-10">
             <FadeIn>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-6">Proficiency</h3>
+              <SubsectionHeader icon={BarChart2} title="Proficiency" />
               <div className="space-y-5">
                 {skills.map((skill, i) => (
                   <SkillBar key={skill.name} {...skill} delay={i * 0.08} />
@@ -141,7 +179,7 @@ export default function Resume() {
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4">Technologies</h3>
+              <SubsectionHeader icon={Layers} title="Technologies" />
               <div className="flex flex-wrap gap-2">
                 {techTags.map((tag) => (
                   <span
@@ -155,19 +193,15 @@ export default function Resume() {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <div className="flex items-center gap-2 mb-6">
-                <GraduationCap size={18} className="text-indigo-500" />
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Education</h3>
-              </div>
+              <SubsectionHeader icon={GraduationCap} title="Education" />
               <div className="space-y-4">
                 {education.map((edu, i) => (
-                  <div key={i} className="relative pl-5 border-l-2 border-zinc-200 dark:border-zinc-700">
-                    <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-indigo-400" />
+                  <TimelineEntry key={i}>
                     <p className="text-xs text-zinc-400 font-medium mb-1">{edu.period}</p>
                     <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{edu.degree}</h4>
                     <p className="text-sm text-indigo-500 dark:text-indigo-400 font-medium">{edu.school} · {edu.location}</p>
                     <p className="text-xs text-zinc-500 mt-0.5">{edu.detail}</p>
-                  </div>
+                  </TimelineEntry>
                 ))}
               </div>
             </FadeIn>
@@ -176,86 +210,54 @@ export default function Resume() {
           {/* Right column */}
           <div className="space-y-10">
             <FadeIn delay={0.1}>
-              <div className="flex items-center gap-2 mb-6">
-                <Briefcase size={18} className="text-indigo-500" />
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Experience</h3>
-              </div>
+              <SubsectionHeader icon={Briefcase} title="Experience" />
               <div className="space-y-6">
                 {experience.map((job, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                    className="relative pl-5 border-l-2 border-zinc-200 dark:border-zinc-700 hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors duration-200"
-                  >
-                    <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+                  <TimelineEntry key={i}>
                     <p className="text-xs text-zinc-400 font-medium mb-1">{job.period}</p>
                     <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{job.role}</h4>
                     <p className="text-sm text-indigo-500 dark:text-indigo-400 font-medium mb-2">{job.company}</p>
                     <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">{job.description}</p>
-                  </motion.div>
+                  </TimelineEntry>
                 ))}
               </div>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <div className="flex items-center gap-2 mb-6">
-                <Users size={18} className="text-indigo-500" />
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Activities</h3>
-              </div>
+              <SubsectionHeader icon={Users} title="Activities" />
               <div className="space-y-6">
                 {activities.map((act, i) => {
                   if (act.type === "single") {
                     return (
-                      <motion.div
-                        key={i}
-                        whileHover={{ x: 4 }}
-                        transition={{ duration: 0.2 }}
-                        className="relative pl-5 border-l-2 border-zinc-200 dark:border-zinc-700 hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors duration-200"
-                      >
-                        <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+                      <TimelineEntry key={i}>
                         <p className="text-xs text-zinc-400 font-medium mb-1">{act.period}</p>
                         <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{act.role}</h4>
                         <p className="text-sm text-indigo-500 dark:text-indigo-400 font-medium mb-2">{act.org}</p>
-                        <ul className="space-y-1.5">
-                          {act.bullets.map((b, j) => (
-                            <li key={j} className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex gap-2">
-                              <span className="text-indigo-400 mt-1 shrink-0">–</span>
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
+                        <BulletList bullets={act.bullets} />
+                      </TimelineEntry>
                     );
                   }
 
                   // Progression entry — multiple roles under one org
                   return (
-                    <div key={i} className="relative pl-5 border-l-2 border-zinc-200 dark:border-zinc-700">
-                      {/* Org header */}
+                    <div
+                      key={i}
+                      className="relative pl-5 border-l-2 border-zinc-200 dark:border-zinc-700 hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors duration-200"
+                    >
                       <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-indigo-400" />
                       <p className="text-sm text-indigo-500 dark:text-indigo-400 font-semibold mb-4">{act.org}</p>
 
-                      <div className="space-y-5">
+                      <div className="space-y-4">
                         {act.roles.map((r, j) => (
                           <motion.div
                             key={j}
                             whileHover={{ x: 4 }}
                             transition={{ duration: 0.2 }}
-                            className="rounded-xl p-4 bg-white/60 dark:bg-zinc-800/40 border border-zinc-200/70 dark:border-zinc-700/60"
+                            className="rounded-2xl p-4 bg-white/60 dark:bg-zinc-800/40 border border-zinc-200/60 dark:border-zinc-700/60 shadow-sm hover:shadow-md hover:border-indigo-200 dark:hover:border-indigo-700/60 transition-all duration-200"
                           >
-                            <div className="flex items-center gap-2 mb-1 flex-wrap">
-                              <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{r.role}</h4>
-                            </div>
+                            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{r.role}</h4>
                             <p className="text-xs text-zinc-400 font-medium mb-3">{r.period}</p>
-                            <ul className="space-y-1.5">
-                              {r.bullets.map((b, k) => (
-                                <li key={k} className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex gap-2">
-                                  <span className="text-indigo-400 mt-1 shrink-0">–</span>
-                                  <span>{b}</span>
-                                </li>
-                              ))}
-                            </ul>
+                            <BulletList bullets={r.bullets} />
                           </motion.div>
                         ))}
                       </div>

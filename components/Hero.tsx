@@ -47,9 +47,12 @@ export default function Hero() {
         animate="show"
         className="max-w-3xl w-full mx-auto text-center"
       >
-        <motion.div variants={item} className="mb-8 inline-flex">
+        <motion.div variants={item} className="mb-8 flex flex-col items-center gap-2">
           <span className="px-4 py-1.5 text-xs font-semibold tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-800/50 rounded-full uppercase">
-            Open to opportunities · Dec 2027
+            Open to internships & research opportunities
+          </span>
+          <span className="text-xs font-medium text-zinc-400 dark:text-zinc-500 tracking-wider">
+            Graduating Dec 2027
           </span>
         </motion.div>
 
