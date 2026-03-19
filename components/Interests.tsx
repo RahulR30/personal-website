@@ -14,22 +14,31 @@ const interests = [
       "Basketball has been a huge part of my life. I played varsity in high school and competed in AAU for San Diego Sol, where I was recruited by multiple Division III programs. The discipline, teamwork, and resilience that basketball demands are things I try to bring into everything I do.",
   },
   {
-    emoji: "📈",
-    title: "Financial Technology",
-    color: "from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30",
-    border: "border-emerald-200/60 dark:border-emerald-800/40",
-    tag: "Quant aspirations · FinTech",
+    emoji: "🍳",
+    title: "Cooking & Family",
+    color: "from-rose-50 to-red-50 dark:from-rose-950/30 dark:to-red-950/30",
+    border: "border-rose-200/60 dark:border-rose-800/40",
+    tag: "Home cooking · Quality time",
     description:
-      "I'm deeply fascinated by the intersection of software and financial markets. My long-term aspiration is to become a quantitative researcher — applying mathematical modeling, statistics, and machine learning to understand and navigate complex market dynamics. I love the idea that code can be used to find signal in noise at massive scale.",
+      "Cooking is one of my favorite ways to unwind — there's something satisfying about starting with raw ingredients and ending with something that brings people together. Some of my best memories are around the dinner table with family, and I try to recreate that feeling as often as I can.",
   },
   {
-    emoji: "🤖",
-    title: "Machine Learning for Global Impact",
-    color: "from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30",
-    border: "border-indigo-200/60 dark:border-indigo-800/40",
-    tag: "AI · Systems Biology · Climate",
+    emoji: "🌿",
+    title: "The Outdoors",
+    color: "from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30",
+    border: "border-emerald-200/60 dark:border-emerald-800/40",
+    tag: "Hiking · Travel · Fresh air",
     description:
-      "Beyond the technical craft, I'm drawn to machine learning as a lever for tackling some of the world's most pressing challenges — from precision medicine and genomics to climate systems and resource allocation. My work in ML pipelines and past research in bioinformatics has deepened my belief that the best algorithms are the ones that matter to people.",
+      "Getting outside is how I reset. Whether it's a hike, a walk, or just being somewhere new, time outdoors keeps me grounded. I love to travel and explore — there's always something interesting about the way different places look and feel.",
+  },
+  {
+    emoji: "📰",
+    title: "Staying Current",
+    color: "from-sky-50 to-indigo-50 dark:from-sky-950/30 dark:to-indigo-950/30",
+    border: "border-sky-200/60 dark:border-sky-800/40",
+    tag: "World events · Markets · Ideas",
+    description:
+      "I like staying sharp on what's happening in the world — from geopolitics and markets to science and culture. I follow financial markets closely and find the intersection of global events and economic dynamics genuinely fascinating. Staying curious is something I take seriously.",
   },
 ];
 
@@ -43,11 +52,11 @@ export default function Interests() {
             Beyond the code
           </h2>
           <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-md mx-auto">
-            The things I care about outside of work — and sometimes, the things that inspire it.
+            The things I care about when I step away from the screen.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {interests.map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.1}>
               <motion.div
