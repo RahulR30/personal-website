@@ -11,7 +11,7 @@ const projects = [
     description:
       "Decentralized file transfer system using Optimum's P2P infrastructure with RLNC for reliable network communication. Integrated Go-based sender/receiver components with Optimum's P2P service proxy to achieve best system efficiency metrics.",
     tags: ["Go", "RLNC", "gRPC", "P2P Networks"],
-    github: "https://github.com/RahulR30",
+    github: "",
     live: "",
     light: "from-amber-50 to-orange-50",
     dark: "dark:from-amber-950/30 dark:to-orange-950/30",
@@ -23,7 +23,7 @@ const projects = [
     description:
       "Context-aware AI tutoring engine that delivers logic-based critiques of user-submitted algorithm solutions. Built with a scalable RESTful backend with automated data seeding and containerized deployment for environment parity.",
     tags: ["Docker", "Ollama API", "REST API", "Python"],
-    github: "https://github.com/RahulR30",
+    github: "",
     live: "",
     light: "from-indigo-50 to-violet-50",
     dark: "dark:from-indigo-950/30 dark:to-violet-950/30",
@@ -35,23 +35,23 @@ const projects = [
     description:
       "Novel graph theory algorithm to maximize airline network flow, accounting for topological constraints. Published in the Curieux Academic Journal and awarded 1st place at the Greater San Diego Science and Engineering Fair.",
     tags: ["Python", "Graph Theory", "Research", "Optimization"],
-    github: "https://github.com/RahulR30",
+    github: "",
     live: "",
     light: "from-emerald-50 to-teal-50",
     dark: "dark:from-emerald-950/30 dark:to-teal-950/30",
     accent: "bg-emerald-500",
   },
   {
-    title: "Northeastern Blockchain Web Platform",
+    title: "Artemis",
     badge: null,
     description:
-      "Lead development of the Northeastern Blockchain organization's web presence using React, coordinating agile sprints and QA for a student developer team. Also designed curriculum for smart contract workshops.",
-    tags: ["React", "TypeScript", "Agile", "Web3"],
-    github: "https://github.com/RahulR30",
+      "Safety-focused mobile application for female travelers. Provides one-tap access to local emergency services (police, fire, ambulance) based on live location, an AI-powered travel assistant for recommendations and safety ratings, and an interactive map for trip planning.",
+    tags: ["Python", "TypeScript", "Node.js", "REST API", "Full-Stack"],
+    github: "https://github.com/RahulR30/Artemis",
     live: "",
-    light: "from-sky-50 to-cyan-50",
-    dark: "dark:from-sky-950/30 dark:to-cyan-950/30",
-    accent: "bg-sky-500",
+    light: "from-violet-50 to-purple-50",
+    dark: "dark:from-violet-950/30 dark:to-purple-950/30",
+    accent: "bg-violet-500",
   },
 ];
 
@@ -101,6 +101,17 @@ export default function Portfolio() {
                 </div>
 
                 <div className="flex items-center gap-3">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                    >
+                      <Github size={14} />
+                      Code
+                    </a>
+                  )}
                   {project.live && (
                     <a
                       href={project.live}
