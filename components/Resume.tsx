@@ -23,6 +23,13 @@ const techTags = [
 
 const experience = [
   {
+    role: "Software Engineer Co-op",
+    company: "Wayfair · Supply Chain & Retail Technology",
+    period: "Jul 2026 — Dec 2026",
+    description:
+      "Incoming SWE co-op on the Supply Chain & Retail Technology team in Boston, MA.",
+  },
+  {
     role: "Teaching Assistant — Data Science Foundations",
     company: "Northeastern University, Khoury College",
     period: "Jan 2026 — Present",
