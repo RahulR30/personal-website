@@ -106,7 +106,7 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
         <motion.div
           initial={{ width: 0 }}
           animate={inView ? { width: `${level}%` } : {}}
-          transition={{ duration: 1, delay, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay, ease: [0.22, 1, 0.36, 1] as const }}
           className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
         />
       </div>
