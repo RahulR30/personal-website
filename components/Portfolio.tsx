@@ -18,6 +18,18 @@ const projects = [
     accent: "bg-amber-500",
   },
   {
+    title: "Semantic Contract Diff",
+    badge: null,
+    description:
+      "NLP-powered tool that uses semantic analysis to distinguish substantive legal changes from superficial text edits in contract documents — surfacing what actually changed in meaning, not just in wording.",
+    tags: ["NLP", "Semantic Analysis", "Python", "Streamlit"],
+    github: "",
+    live: "https://semanticcontractdiff.streamlit.app/",
+    light: "from-sky-50 to-cyan-50",
+    dark: "dark:from-sky-950/30 dark:to-cyan-950/30",
+    accent: "bg-sky-500",
+  },
+  {
     title: "AlgoTutorAI",
     badge: null,
     description:

@@ -61,12 +61,20 @@ const activities = [
     org: "Northeastern AI (MLE Dev Team)",
     roles: [
       {
-        role: "Tech Lead",
-        period: "Mar 2026 — Present",
+        role: "Director of Technology",
+        period: "Apr 2026 — Present",
         promoted: true,
         bullets: [
-          "Lead development of Semantic Contract Diff (SCD) — an NLP-powered tool that uses semantic analysis to distinguish substantive legal changes from superficial text edits in contract documents.",
-          "Architect end-to-end ML pipelines for industry partners, implementing model training, hyperparameter optimization, and performance evaluation.",
+          "Lead all technical teams across Northeastern AI, overseeing project direction, team coordination, and delivery across the MLE Dev Team and all other verticals.",
+        ],
+      },
+      {
+        role: "Tech Lead",
+        period: "Mar 2026 — Apr 2026",
+        promoted: true,
+        bullets: [
+          "Led development of Semantic Contract Diff (SCD) — an NLP-powered tool that uses semantic analysis to distinguish substantive legal changes from superficial text edits in contract documents.",
+          "Architected end-to-end ML pipelines for industry partners, implementing model training, hyperparameter optimization, and performance evaluation.",
         ],
       },
       {
