@@ -6,17 +6,18 @@ import { Briefcase, GraduationCap, Download, Users, BarChart2, Layers } from "lu
 import FadeIn from "./FadeIn";
 
 const skills = [
-  { name: "Python", level: 92 },
-  { name: "JavaScript / TypeScript", level: 88 },
-  { name: "React / Next.js", level: 85 },
-  { name: "Java / C / C++", level: 80 },
-  { name: "Machine Learning (PyTorch / TensorFlow)", level: 78 },
-  { name: "Docker / DevOps", level: 72 },
+  { name: "Python", level: 9 },
+  { name: "JavaScript / TypeScript", level: 9 },
+  { name: "React / Next.js", level: 8 },
+  { name: "Java / C / C++", level: 8 },
+  { name: "Machine Learning (PyTorch / TensorFlow)", level: 8 },
+  { name: "Docker / DevOps", level: 7 },
 ];
 
 const techTags = [
   "Python", "JavaScript", "TypeScript", "Java", "C", "C++",
   "React", "Node.js / Express", "PyTorch", "TensorFlow",
+  "HuggingFace", "Vision Transformers", "Streamlit",
   "pandas", "NumPy", "Matplotlib", "SciPy",
   "Git", "Docker", "Vercel", "Render", "REST APIs",
 ];
@@ -108,12 +109,12 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
     <div ref={ref} className="space-y-1.5">
       <div className="flex justify-between items-center text-sm">
         <span className="font-medium text-zinc-700 dark:text-zinc-300">{name}</span>
-        <span className="text-zinc-400 text-xs">{level}%</span>
+        <span className="text-zinc-400 text-xs">{level}/10</span>
       </div>
       <div className="h-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
-          animate={inView ? { width: `${level}%` } : {}}
+          animate={inView ? { width: `${level * 10}%` } : {}}
           transition={{ duration: 1, delay, ease: [0.22, 1, 0.36, 1] as const }}
           className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
         />
