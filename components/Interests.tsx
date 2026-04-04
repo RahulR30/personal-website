@@ -31,15 +31,6 @@ const interests = [
     description:
       "Getting outside is how I reset. Whether it's a hike, a walk, or just being somewhere new, time outdoors keeps me grounded. I love to travel and explore — there's always something interesting about the way different places look and feel.",
   },
-  {
-    emoji: "📰",
-    title: "Staying Current",
-    color: "from-sky-50 to-indigo-50 dark:from-sky-950/30 dark:to-indigo-950/30",
-    border: "border-sky-200/60 dark:border-sky-800/40",
-    tag: "World events · Markets · Ideas",
-    description:
-      "I like staying sharp on what's happening in the world — from geopolitics and markets to science and culture. I follow financial markets closely and find the intersection of global events and economic dynamics genuinely fascinating. Staying curious is something I take seriously.",
-  },
 ];
 
 export default function Interests() {
