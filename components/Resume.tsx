@@ -24,6 +24,13 @@ const techTags = [
 
 const experience = [
   {
+    role: "Teaching Assistant — Discrete Structures",
+    company: "Northeastern University, Khoury College",
+    period: "May 2026 — Jul 2026",
+    description:
+      "Hold office hours covering logic, proof techniques, combinatorics, graph theory, and asymptotic analysis. Grade assignments and exams, and provide individualized support to students on foundational discrete mathematics concepts.",
+  },
+  {
     role: "Teaching Assistant — Data Science Foundations",
     company: "Northeastern University, Khoury College",
     period: "Jan 2026 — Present",
