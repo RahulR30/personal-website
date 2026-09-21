@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -14,32 +15,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rahul Rao — CS Student & Software Developer at Northeastern University",
+  title: "Rahul Rao — Quantitative Research & Software Engineering | Northeastern",
   description:
-    "Rahul Rao is a Computer Science student at Northeastern University (Khoury College) building full-stack applications, machine learning pipelines, and quantitative systems. Open to co-ops and internships.",
+    "Rahul Rao is a Computer Science student at Northeastern University: ML research on high-frequency market data (temporal nowcasting with lead-lag structure, walk-forward validated) and production data engineering at Wayfair. Seeking Summer 2027 quantitative research, trading, and software engineering internships.",
   keywords: [
     "Rahul Rao",
     "Rahul Rao Northeastern",
+    "Rahul Rao quantitative research",
     "Rahul Rao software engineer",
+    "quantitative research intern 2027",
+    "quantitative trading intern 2027",
+    "software engineering intern 2027",
+    "quant researcher Northeastern",
+    "high-frequency market data machine learning",
     "Northeastern University computer science",
     "Khoury College of Computer Sciences",
-    "software developer Boston",
-    "machine learning engineer",
+    "machine learning engineer Boston",
   ],
   authors: [{ name: "Rahul Rao" }],
   openGraph: {
-    title: "Rahul Rao — CS Student & Software Developer at Northeastern University",
+    title: "Rahul Rao — Quantitative Research & Software Engineering | Northeastern",
     description:
-      "Computer Science student at Northeastern University building full-stack apps, ML pipelines, and quantitative systems.",
+      "ML research on high-frequency market data (0.28 walk-forward R² vs 0.21 Ridge baseline) and production data engineering at Wayfair. Seeking Summer 2027 quant and SWE roles.",
     url: "https://rahulrao.dev",
     siteName: "Rahul Rao",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Rahul Rao — CS @ Northeastern University",
+    title: "Rahul Rao — Quant Research & Software Engineering @ Northeastern",
     description:
-      "Computer Science student at Northeastern University building full-stack apps and ML systems.",
+      "ML research on high-frequency market data and production data engineering at Wayfair. Seeking Summer 2027 quant and SWE internships.",
   },
   metadataBase: new URL("https://rahulrao.dev"),
   verification: {
@@ -60,6 +66,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
