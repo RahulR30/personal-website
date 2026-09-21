@@ -11,7 +11,8 @@ import {
   CornerDownLeft,
   Briefcase,
 } from "lucide-react";
-import { profileById, type ProfileItem } from "@/lib/profile";
+import { type ProfileItem } from "@/lib/profile";
+import { streamMatch } from "@/lib/streamMatch";
 import ExploreNode from "./ExploreNode";
 
 const examples = [
@@ -58,7 +59,7 @@ function nodePositions(count: number) {
   });
 }
 
-type Phase = "idle" | "loading" | "results";
+type Phase = "idle" | "loading" | "streaming" | "results";
 
 export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
   const [query, setQuery] = useState("");
@@ -89,7 +90,7 @@ export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
 
   const search = async (q: string) => {
     const trimmed = q.trim();
-    if (trimmed.length < 3) return;
+    if (trimmed.length < 3 || phase === "loading" || phase === "streaming") return;
 
     const seq = ++requestSeq.current;
     setQuery(trimmed);
@@ -99,32 +100,23 @@ export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
     setSummary("");
     setExpandedId(null);
 
-    try {
-      const res = await fetch("/api/match", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: trimmed }),
-      });
-      const data = await res.json();
+    const failure = await streamMatch(trimmed, {
+      onSummary: (delta) => {
+        if (seq !== requestSeq.current) return; // superseded
+        // First token is the cue to switch out of the loading state.
+        setPhase("streaming");
+        setSummary((prev) => prev + delta);
+      },
+      onItems: (found) => {
+        if (seq !== requestSeq.current) return;
+        setItems(found);
+        setPhase("results");
+      },
+    });
 
-      if (seq !== requestSeq.current) return; // superseded
-
-      if (!res.ok) {
-        setError(data.error ?? "Search failed — try again.");
-        setPhase("idle");
-        return;
-      }
-
-      setSummary(data.summary);
-      setItems(
-        (data.itemIds as string[])
-          .map((id) => profileById.get(id))
-          .filter((i): i is ProfileItem => Boolean(i)),
-      );
-      setPhase("results");
-    } catch {
-      if (seq !== requestSeq.current) return;
-      setError("Couldn't reach the server — check your connection.");
+    if (seq !== requestSeq.current) return;
+    if (failure) {
+      setError(failure);
       setPhase("idle");
     }
   };
@@ -137,6 +129,7 @@ export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
     setError(null);
   };
 
+  const busy = phase === "loading" || phase === "streaming";
   const showResults = phase === "results" && items.length > 0;
   const positions = nodePositions(items.length || 1);
 
@@ -172,17 +165,17 @@ export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
             />
             <button
               type="submit"
-              disabled={phase === "loading" || query.trim().length < 3}
+              disabled={busy || query.trim().length < 3}
               className="mr-2 inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-zinc-900 dark:bg-indigo-600 rounded-xl hover:bg-zinc-700 dark:hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shrink-0"
             >
-              {phase === "loading" ? "Mapping…" : <>Map<CornerDownLeft size={12} /></>}
+              {busy ? "Mapping…" : <>Map<CornerDownLeft size={12} /></>}
             </button>
           </div>
         </div>
       </form>
 
       <AnimatePresence>
-        {showResults && summary && (
+        {summary && (
           <motion.div
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
@@ -197,6 +190,13 @@ export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
             </div>
             <p className="text-[12px] text-zinc-700 dark:text-zinc-300 leading-relaxed">
               {summary}
+              {phase === "streaming" && (
+                <motion.span
+                  animate={{ opacity: [1, 0.15, 1] }}
+                  transition={{ duration: 0.9, repeat: Infinity }}
+                  className="ml-0.5 inline-block w-[2px] h-[0.9em] translate-y-[1px] bg-indigo-500"
+                />
+              )}
             </p>
           </motion.div>
         )}
@@ -365,13 +365,9 @@ export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Idle affordances live under the hub */}
-        {!showResults && (
+        {(phase === "idle" || phase === "loading") && (
           <div className="relative -mt-[34vh] flex flex-col items-center px-6 pb-16">
-            <IdleExtras
-              phase={phase}
-              error={error}
-              onPick={search}
-            />
+            <IdleExtras phase={phase} error={error} onPick={search} />
           </div>
         )}
       </div>
@@ -381,7 +377,7 @@ export default function ExploreCanvas({ onExit }: { onExit: () => void }) {
         <div className="w-full max-w-lg flex flex-col items-center">
           {hub}
           <div className="mt-4 w-full">
-            <IdleExtras phase={phase} error={error} onPick={search} hide={showResults} />
+            <IdleExtras phase={phase} error={error} onPick={search} hide={phase !== "idle" && phase !== "loading"} />
           </div>
           <AnimatePresence>
             {showResults && (

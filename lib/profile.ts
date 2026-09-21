@@ -163,7 +163,9 @@ export const profile: ProfileItem[] = [
     org: "Northeastern University",
     period: "Expected Dec 2027",
     summary:
-      "Coursework: Artificial Intelligence, Algorithms & Data Structures, Programming in C++, Discrete Structures, Matrix Methods for Machine Learning, Object-Oriented Design, Computer Systems, Multivariable Calculus, Linear Algebra, Principles of Mathematics, Theory of Computation. Languages: C++, Python, C, C#, Java, JavaScript/TypeScript. Frameworks and tools: React, Node/Express, PyTorch, TensorFlow, Docker, Apache Kafka, BigQuery, pandas, Matplotlib, SciPy, Git.",
+      "Coursework: Artificial Intelligence, Algorithms & Data Structures, Programming in C++, Discrete Structures, Matrix Methods for Machine Learning, Probability & Statistics, Object-Oriented Design, Computer Systems, Multivariable Calculus, Linear Algebra, Principles of Mathematics, Theory of Computation. Languages: C++, Python, C, C#, Java, JavaScript/TypeScript. Frameworks and tools: React, Node/Express, PyTorch, TensorFlow, Docker, Apache Kafka, BigQuery, pandas, Matplotlib, SciPy, Git.",
+    // Every keyword here must be supported by the prose above — keywords get
+    // read as facts, so an unsupported one becomes an invented credential.
     tags: ["linear algebra", "calculus", "probability", "statistics", "mathematics", "C++", "Python", "Java", "C", "C#", "algorithms", "theory of computation", "GPA", "coursework", "TensorFlow", "React"],
   },
 ];
