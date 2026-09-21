@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Search, Sparkles, CornerDownLeft } from "lucide-react";
-import { profileById, type ProfileItem } from "@/lib/profile";
+import { type ProfileItem } from "@/lib/profile";
+import { streamMatch } from "@/lib/streamMatch";
 
 const examples = [
   "C++ and low-latency data systems",
@@ -32,31 +33,22 @@ export default function RecruiterSearch() {
 
     setLoading(true);
     setError(null);
-    setResult(null);
+    setResult({ summary: "", items: [] });
 
-    try {
-      const res = await fetch("/api/match", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: trimmed }),
-      });
-      const data = await res.json();
+    const failure = await streamMatch(trimmed, {
+      onSummary: (delta) =>
+        setResult((prev) => ({
+          summary: (prev?.summary ?? "") + delta,
+          items: prev?.items ?? [],
+        })),
+      onItems: (items) =>
+        setResult((prev) => ({ summary: prev?.summary ?? "", items })),
+    });
 
-      if (!res.ok) {
-        setError(data.error ?? "Search failed — try again.");
-        return;
-      }
-
-      setResult({
-        summary: data.summary,
-        items: (data.itemIds as string[])
-          .map((id) => profileById.get(id))
-          .filter((i): i is ProfileItem => Boolean(i)),
-      });
-    } catch {
-      setError("Couldn't reach the server — check your connection.");
-    } finally {
-      setLoading(false);
+    setLoading(false);
+    if (failure) {
+      setError(failure);
+      setResult(null);
     }
   };
 
@@ -117,7 +109,7 @@ export default function RecruiterSearch() {
         </div>
       )}
 
-      {loading && (
+      {loading && !result?.summary && (
         <div className="mt-4 flex items-center gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
           <span className="w-3.5 h-3.5 border-2 border-indigo-300 border-t-indigo-600 rounded-full animate-spin" />
           Matching against Rahul&apos;s background…
@@ -128,7 +120,7 @@ export default function RecruiterSearch() {
         <p className="mt-4 text-sm text-rose-600 dark:text-rose-400">{error}</p>
       )}
 
-      {result && (
+      {result && (result.summary || result.items.length > 0) && (
         <div className="mt-5 rounded-2xl border border-indigo-200/70 dark:border-indigo-800/50 bg-indigo-50/50 dark:bg-indigo-950/20 overflow-hidden">
           <div className="p-5 sm:p-6">
             <div className="flex items-center gap-2 mb-3">
@@ -168,8 +160,8 @@ export default function RecruiterSearch() {
 
           <div className="px-5 sm:px-6 py-3 bg-white/70 dark:bg-zinc-900/50 border-t border-indigo-200/70 dark:border-indigo-800/50">
             <p className="text-[11px] text-zinc-400 dark:text-zinc-500">
-              Summary written by Claude, grounded strictly in the verified
-              background below — the detail cards are Rahul&apos;s own text, unedited.
+              Summary is generated, grounded strictly in the verified background
+              below — the detail cards are Rahul&apos;s own text, unedited.
             </p>
           </div>
         </div>

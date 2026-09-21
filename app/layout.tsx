@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SITE_URL } from "@/lib/routes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title: "Rahul Rao — Quantitative Research & Software Engineering | Northeastern",
     description:
       "ML research on high-frequency market data (0.28 walk-forward R² vs 0.21 Ridge baseline) and production data engineering at Wayfair. Seeking Summer 2027 quant and SWE roles.",
-    url: "https://rahulrao.dev",
+    url: SITE_URL,
     siteName: "Rahul Rao",
     type: "website",
   },
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     description:
       "ML research on high-frequency market data and production data engineering at Wayfair. Seeking Summer 2027 quant and SWE internships.",
   },
-  metadataBase: new URL("https://rahulrao.dev"),
+  metadataBase: new URL(SITE_URL),
   verification: {
     google: "ajbY1T0Gzbt92_4XbxBYkAFezmwIrPiWN0OSbAG30mI",
   },

@@ -6,12 +6,13 @@ import Interests from "@/components/Interests";
 import Research from "@/components/Research";
 import Contact from "@/components/Contact";
 import ExploreShell from "@/components/explore/ExploreShell";
+import { SITE_URL } from "@/lib/routes";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Rahul Rao",
-  url: "https://rahulrao.dev",
+  url: SITE_URL,
   email: "rao.rahul1@northeastern.edu",
   jobTitle: "ML Research Assistant & Software Engineer",
   description:
