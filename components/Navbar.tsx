@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const links = [
   { label: "About", href: "#about" },
-  { label: "Portfolio", href: "#portfolio" },
+  { label: "Research", href: "#research" },
   { label: "Resume", href: "#resume" },
+  { label: "Projects", href: "#portfolio" },
   { label: "Interests", href: "#interests" },
-  { label: "Current Work", href: "#research" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -67,6 +68,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+
+            <Link
+              href="/recruiter"
+              className="px-3 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-950/40 transition-all duration-150"
+            >
+              Recruiter view
+            </Link>
 
             {/* Theme toggle */}
             {mounted && (
@@ -131,6 +139,13 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <Link
+                href="/recruiter"
+                onClick={() => setMobileOpen(false)}
+                className="px-4 py-3 text-sm font-semibold text-indigo-600 dark:text-indigo-400 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-950/40 transition-all"
+              >
+                Recruiter view
+              </Link>
             </nav>
           </motion.div>
         )}

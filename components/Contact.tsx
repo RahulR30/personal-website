@@ -37,7 +37,7 @@ export default function Contact() {
             Let&apos;s work together
           </h2>
           <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-md mx-auto">
-            Have a project in mind, want to collaborate, or just want to say hi? My inbox is always open.
+            Recruiting for Summer 2027, want to talk through the research, or just want to say hi? My inbox is always open.
           </p>
         </FadeIn>
 
@@ -136,7 +136,9 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-2">Availability</p>
-                <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Open to co-ops, internships & research roles</p>
+                <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  Summer 2027 — quantitative research, trading &amp; software engineering internships
+                </p>
               </div>
               <div>
                 <p className="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-4">Find me on</p>
